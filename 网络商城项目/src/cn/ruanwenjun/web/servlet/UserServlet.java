@@ -18,7 +18,10 @@ import cn.ruanwenjun.utils.MailUtils;
 public class UserServlet extends BasicServlet {
 	public void userRegister(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 从前台接收数据,并封装成User
+		
+		//获取http请求里的参数和参数值映射
 		Map<String, String[]> properties = request.getParameterMap();
+
 		User user = new User();
 		try {
 			BeanUtils.populate(user, properties);
@@ -34,6 +37,7 @@ public class UserServlet extends BasicServlet {
 		// 将User传给service层进行注册
 		UserService service = new UserService();
 		boolean isRegister = service.register(user);
+		
 		if (isRegister) {
 			// 注册成功,发送激活邮件，跳转到激活页面
 			try {
