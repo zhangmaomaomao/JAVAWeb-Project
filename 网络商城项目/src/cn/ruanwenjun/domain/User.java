@@ -11,8 +11,10 @@ public class User {
 	private String telephone;
 	private String birthday;
 	private String sex;
+	
 	private int state;        //激活状态
 	private String code;      //激活码
+	
 	public String getUid() {
 		return uid;
 	}
